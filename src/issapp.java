@@ -17,9 +17,5 @@ public class issapp {
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.pack();
         frame.setVisible(true);
-    
-        //TODO: widok: ISS_speed_App z przyciskami
-        //TODO: kontroler: przekazanie danych do i z modelu
-        //TODO: model: magazynowanie danych i obliczenia
     }
 }

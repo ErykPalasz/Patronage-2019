@@ -1,4 +1,4 @@
-import View.GUI;
+import View.ISS_speed_App;
 
 import javax.swing.*;
 
@@ -12,13 +12,13 @@ public class issapp {
                 latitude2 = 51.5185, longitude2 = 16.3822;
         // *******************************************
     
-        JFrame frame = new JFrame("GUI");
-        frame.setContentPane(new GUI().panel1);
+        JFrame frame = new JFrame("ISS_speed_App");
+        frame.setContentPane(new ISS_speed_App().panel1);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.pack();
         frame.setVisible(true);
     
-        //TODO: widok: GUI z przyciskami
+        //TODO: widok: ISS_speed_App z przyciskami
         //TODO: kontroler: przekazanie danych do i z modelu
         //TODO: model: magazynowanie danych i obliczenia
     }

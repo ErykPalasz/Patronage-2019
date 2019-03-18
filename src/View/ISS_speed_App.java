@@ -8,7 +8,7 @@ import java.awt.event.ActionListener;
 
 public class ISS_speed_App extends JFrame {
     
-    public JPanel panel1;
+    public JPanel ISSspeedAPPview;
     private JButton startButton;
     private JProgressBar piecsekund;
     private JComboBox comboBoxIlosc;

@@ -42,11 +42,27 @@ class TestyWidoku {
     
     @Test
     void testAktualizacjiPredkosci() {
-    
+        testWidoku.updatePredkosc(1.2);
+        assertEquals("1.2",testWidoku.getPredkosc());
     }
     
     @Test
     void testAktualizacjiDrogi() {
+        testWidoku.updateDroga(1.2);
+        assertEquals("1.2",testWidoku.getDroga());
+    }
     
+    @Test
+    void testAktualizacjiLicznika(){
+        assertAll("licznik",()->{
+            testWidoku.updateLicznik(5);
+            assertEquals("100%",testWidoku.getLicznik());
+            
+            testWidoku.updateLicznik(0);
+            assertEquals("0%",testWidoku.getLicznik());
+            
+            testWidoku.updateLicznik(2.5);
+            assertEquals("50%",testWidoku.getLicznik());
+        });
     }
 }

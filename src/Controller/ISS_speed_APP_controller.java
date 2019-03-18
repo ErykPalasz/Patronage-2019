@@ -7,7 +7,7 @@ import View.ISS_speed_App;
 
 import static java.lang.Math.*;
 
-public class ISS_speed_APP_controller {
+public class ISS_speed_APP_controller implements Runnable{
     
     daneISS daneiss = new daneISS();
     ISS_speed_App widok;
@@ -39,9 +39,8 @@ public class ISS_speed_APP_controller {
         double aa = sin(dLat/2) * sin(dLat/2) + cos(rLat1) * cos(rLat2) * sin(dLon/2) * sin(dLon/2);
         double cc = 2 * atan2(sqrt(aa), sqrt(1-aa));
         double dd = R * cc;
-        double velocity = dd/(b.getTimestamp()-a.getTimestamp());
-        
-        return velocity;
+    
+        return dd/(b.getTimestamp()-a.getTimestamp());
     }
     
     // obliczanie łącznej przebytej drogi na podstawie wszystkich odczytów
@@ -76,5 +75,21 @@ public class ISS_speed_APP_controller {
         widok.updateDroga(obliczDroge());
     }
     
-    //todo licznik 5 sekund (pasek ładowania)
+    // licznik 5 sekund (pasek ładowania)
+    public void run(){
+        this.licznik();
+    }
+    
+    void licznik(){
+        double czas = 5.0;
+        while (czas>0){
+            try {
+                czas -= 0.01;
+                widok.updateLicznik(czas);
+                Thread.sleep(10L);    // 1000L = 1000 ms = 1 s
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }
+    }
 }

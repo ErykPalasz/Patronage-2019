@@ -30,8 +30,4 @@ public class daneISS {
         mdi = zestawDanychISS.get(zestawDanychISS.size() - 2);
         return mdi;
     }
-    
-    //todo odczyt predkosci
-    //todo odczyt drogi
-   
 }

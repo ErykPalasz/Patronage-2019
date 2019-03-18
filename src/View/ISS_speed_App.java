@@ -18,4 +18,9 @@ public class ISS_speed_App extends JFrame {
     public void updateDroga(double dis){
         obliczDroga.setText(String.valueOf(dis));
     }
+    
+    public void updateLicznik(double cz){
+        double procent = cz * 20;
+        piecsekund.setValue((int) procent);
+    }
 }

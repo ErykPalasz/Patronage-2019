@@ -29,7 +29,7 @@
           <borderPainted value="true"/>
           <indeterminate value="false"/>
           <stringPainted value="false"/>
-          <value value="60"/>
+          <value value="0"/>
         </properties>
       </component>
       <hspacer id="cd4e6">

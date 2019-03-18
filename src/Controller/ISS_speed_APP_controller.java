@@ -5,6 +5,9 @@ import Model.modelDanychISS;
 
 import View.ISS_speed_App;
 
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
 import static java.lang.Math.*;
 
 public class ISS_speed_APP_controller implements Runnable{
@@ -14,9 +17,14 @@ public class ISS_speed_APP_controller implements Runnable{
     
     //todo pobranie danych z api
     //**************** MOCK *********************
-    void MOCKdanychzAPI() {
-        dodajodczyt(1552696562, 51.3865, 4.7025);
-        dodajodczyt(1552696679, 51.5185, 16.3822);
+    void MOCKdanychzAPI(int odczyt) {
+        if (odczyt == 0) {
+            dodajodczyt(1552696562, 51.3865, 4.7025);
+        }else if (odczyt == 1) {
+            dodajodczyt(1552696679, 51.5185, 16.3822);
+        }else {
+            System.out.println(odczyt);
+        }
     }
     //*******************************************
     
@@ -91,5 +99,16 @@ public class ISS_speed_APP_controller implements Runnable{
                 e.printStackTrace();
             }
         }
+    }
+    
+    public void buttonPress(){
+        MOCKdanychzAPI(0);
+//        for (int i = 0; i < 1; i++) {
+            run();
+            MOCKdanychzAPI(1);
+            
+            updateVelocityToView();
+            updateDistanceToView();
+//        }
     }
 }

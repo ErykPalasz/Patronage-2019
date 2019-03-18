@@ -7,7 +7,6 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class ISS_speed_App extends JFrame {
-    private ISS_speed_APP_controller controller = new ISS_speed_APP_controller();
     
     public JPanel panel1;
     private JButton startButton;
@@ -17,12 +16,7 @@ public class ISS_speed_App extends JFrame {
     private JLabel obliczPredkosc;
     
     public ISS_speed_App(){
-        startButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent actionEvent) {
-                controller.buttonPress();
-            }
-        });
+        startButton.addActionListener(new wciskStart());
     }
     
     public void updatePredkosc(double vel){
@@ -36,5 +30,14 @@ public class ISS_speed_App extends JFrame {
     public void updateLicznik(double cz){
         double procent = cz * 20;
         piecsekund.setValue((int) procent);
+    }
+}
+
+class wciskStart implements ActionListener{
+    private ISS_speed_APP_controller controller = new ISS_speed_APP_controller();
+    
+    @Override
+    public void actionPerformed(ActionEvent actionEvent) {
+        controller.buttonPress();
     }
 }

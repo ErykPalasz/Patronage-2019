@@ -92,7 +92,7 @@ public class ISS_speed_APP_controller implements Runnable{
             try {
                 czas -= 0.01;
                 widok.updateLicznik(czas);
-                Thread.sleep(10L);    // 1000L = 1000 ms = 1 s
+                Thread.sleep(10L);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }

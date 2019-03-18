@@ -10,4 +10,12 @@ public class ISS_speed_App extends JFrame {
     private JComboBox comboBoxIlosc;
     private JLabel obliczDroga;
     private JLabel obliczPredkosc;
+    
+    public void updatePredkosc(double vel){
+        obliczPredkosc.setText(String.valueOf(vel));
+    }
+    
+    public void updateDroga(double dis){
+        obliczDroga.setText(String.valueOf(dis));
+    }
 }

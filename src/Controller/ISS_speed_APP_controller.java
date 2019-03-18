@@ -3,11 +3,14 @@ package Controller;
 import Model.daneISS;
 import Model.modelDanychISS;
 
+import View.ISS_speed_App;
+
 import static java.lang.Math.*;
 
 public class ISS_speed_APP_controller {
     
     daneISS daneiss = new daneISS();
+    ISS_speed_App widok;
     
     //todo pobranie danych z api
     //**************** MOCK *********************
@@ -23,7 +26,7 @@ public class ISS_speed_APP_controller {
         daneiss.dodajOdczyt(timestamp,lati,longi);
     }
     
-    //todo obliczanie prędkości z dwóch ostatnich odczytów
+    // obliczanie prędkości z dwóch ostatnich odczytów
     double obliczPredkosc() {
         modelDanychISS a = daneiss.odczytPrzedOstatniElement();
         modelDanychISS b = daneiss.odczytOstatniElement();
@@ -36,21 +39,42 @@ public class ISS_speed_APP_controller {
         double aa = sin(dLat/2) * sin(dLat/2) + cos(rLat1) * cos(rLat2) * sin(dLon/2) * sin(dLon/2);
         double cc = 2 * atan2(sqrt(aa), sqrt(1-aa));
         double dd = R * cc;
-    
-        return dd;
+        double velocity = dd/(b.getTimestamp()-a.getTimestamp());
+        
+        return velocity;
     }
     
-    //todo obliczanie łącznej przebytej drogi na podstawie wszystkich odczytów
+    // obliczanie łącznej przebytej drogi na podstawie wszystkich odczytów
     double obliczDroge() {
-        modelDanychISS a = daneiss.odczytIndexElement(0);
-        modelDanychISS b = daneiss.odczytOstatniElement();
-        double predkosc = obliczPredkosc();
+        int index = 0;
+        double droga=0;
         
+        while (daneiss.odczytIndexElement(index + 1) != null){
+            modelDanychISS a = daneiss.odczytIndexElement(index);
+            modelDanychISS b = daneiss.odczytIndexElement(index + 1);
+    
+            int R = 6371;
+            double dLat = toRadians(b.getLatitude() - a.getLatitude());
+            double dLon = toRadians(b.getLongitude() - a.getLongitude());
+            double rLat1 = toRadians(a.getLatitude());
+            double rLat2 = toRadians(b.getLatitude());
+            double aa = sin(dLat/2) * sin(dLat/2) + cos(rLat1) * cos(rLat2) * sin(dLon/2) * sin(dLon/2);
+            double cc = 2 * atan2(sqrt(aa), sqrt(1-aa));
+            double dd = R * cc;
+    
+            droga += dd;
+        }
         
-        return 0;
+        return droga;
     }
     
-    //todo przekazanie prędkości i odległości do widoku
+    // przekazanie prędkości i odległości do widoku
+    void updateVelocityToView(){
+        widok.updatePredkosc(obliczPredkosc());
+    }
+    void updateDistanceToView(){
+        widok.updateDroga(obliczDroge());
+    }
     
     //todo licznik 5 sekund (pasek ładowania)
 }

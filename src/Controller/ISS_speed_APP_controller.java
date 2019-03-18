@@ -16,7 +16,7 @@ public class ISS_speed_APP_controller implements Runnable{
     ISS_speed_App widok;
     
     //todo pobranie danych z api
-    //**************** MOCK *********************
+    //MOCK
     void MOCKdanychzAPI(int odczyt) {
         if (odczyt == 0) {
             dodajodczyt(1552696562, 51.3865, 4.7025);
@@ -26,8 +26,6 @@ public class ISS_speed_APP_controller implements Runnable{
             System.out.println(odczyt);
         }
     }
-    //*******************************************
-    
     
     //przekazanie do modelu
     void dodajodczyt(int timestamp, double lati, double longi){

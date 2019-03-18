@@ -2,16 +2,16 @@ package Model;
 
 public class modelDanychISS {
     // dostaję z api
-    private int timestamp = 0;
+    private long timestamp = 0;
     private double latitude = 0;
     private double longitude = 0;
     
     // getters and setters
-    public int getTimestamp() {
+    public long getTimestamp() {
         return timestamp;
     }
     
-    public void setTimestamp(int timestamp) {
+    public void setTimestamp(long timestamp) {
         this.timestamp = timestamp;
     }
     

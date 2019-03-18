@@ -16,7 +16,7 @@ public class ISS_speed_App extends JFrame {
     private JLabel obliczDroga;
     private JLabel obliczPredkosc;
     
-    void initComponents(){
+    public ISS_speed_App(){
         startButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {

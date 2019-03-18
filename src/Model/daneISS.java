@@ -8,7 +8,7 @@ public class daneISS {
     private ArrayList<modelDanychISS> zestawDanychISS = new ArrayList<>();
     private modelDanychISS mdi;
     
-    public void dodajOdczyt(int czas, double lati, double longi) {
+    public void dodajOdczyt(long czas, double lati, double longi) {
         mdi.setTimestamp(czas);
         mdi.setLatitude(lati);
         mdi.setLongitude(longi);

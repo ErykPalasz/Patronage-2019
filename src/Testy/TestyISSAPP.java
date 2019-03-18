@@ -37,4 +37,16 @@ class TestyDanych {
     }
 }
 
-
+class TestyWidoku {
+    private final ISS_speed_App testWidoku = new ISS_speed_App();
+    
+    @Test
+    void testAktualizacjiPredkosci() {
+    
+    }
+    
+    @Test
+    void testAktualizacjiDrogi() {
+    
+    }
+}

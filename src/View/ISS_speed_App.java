@@ -49,6 +49,10 @@ class wciskStart implements ActionListener{
     
     @Override
     public void actionPerformed(ActionEvent actionEvent) {
-        controller.buttonPress();
+        try {
+        
+        }catch (Exception ex){
+            ex.printStackTrace();
+        }
     }
 }

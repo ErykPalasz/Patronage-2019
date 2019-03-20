@@ -5,36 +5,32 @@ import java.util.ArrayList;
 public class zestawDanychISS {
     
     private ArrayList<modelDanychISS> zestawDanychISS;
-    private modelDanychISS mdiss;
     
     public zestawDanychISS(){
         zestawDanychISS = new ArrayList<>(2);
-        mdiss = new modelDanychISS();
     }
     
-    public void dodajOdczyt(long czas, double lati, double longi) {
-        mdiss.setTimestamp(czas);
-        mdiss.setLatitude(lati);
-        mdiss.setLongitude(longi);
+    // zapis
+    public void dodajOdczyt(long timestamp, double latitude, double longitude) {
+        modelDanychISS mdiss = new modelDanychISS(timestamp, latitude, longitude);
         zestawDanychISS.add(mdiss);
     }
     
+    // ilość elementów
     public int rozmiarTablicy(){
         return zestawDanychISS.size();
     }
     
+    // odczyt
     public modelDanychISS odczytNtyElement(int index) {
-        mdiss = zestawDanychISS.get(index);
-        return mdiss;
+        return zestawDanychISS.get(index);
     }
     
     public modelDanychISS odczytOstatniElement() {
-        mdiss = zestawDanychISS.get(zestawDanychISS.size() - 1);
-        return mdiss;
+        return zestawDanychISS.get(zestawDanychISS.size() - 1);
     }
     
     public modelDanychISS odczytPrzedOstatniElement() {
-        mdiss = zestawDanychISS.get(zestawDanychISS.size() - 2);
-        return mdiss;
+        return zestawDanychISS.get(zestawDanychISS.size() - 2);
     }
 }

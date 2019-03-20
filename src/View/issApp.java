@@ -1,12 +1,12 @@
 package View;
 
-import Controller.ISS_speed_APP_controller;
+import Controller.issAppController;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class ISS_speed_App extends JFrame {
+public class issApp extends JFrame {
     public JPanel ISSspeedAPPview;
     
     private JButton startButton;
@@ -14,10 +14,12 @@ public class ISS_speed_App extends JFrame {
     private JLabel obliczDroga;
     private JLabel obliczPredkosc;
     
-    public ISS_speed_App(){
+    // słuchacz startu
+    public issApp(){
         startButton.addActionListener(new wciskStart());
     }
     
+    // setters and getters
     public void updatePredkosc(double vel){
         obliczPredkosc.setText(String.valueOf(vel));
     }
@@ -44,8 +46,9 @@ public class ISS_speed_App extends JFrame {
     }
 }
 
+// słuchacz
 class wciskStart implements ActionListener{
-    private ISS_speed_APP_controller controller = new ISS_speed_APP_controller();
+    private issAppController controller = new issAppController();
     
     @Override
     public void actionPerformed(ActionEvent actionEvent) {

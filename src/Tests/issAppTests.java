@@ -79,18 +79,19 @@ class testyDanych {
                 
                 @Test@DisplayName("Liczenie pojedyńczego, najnowszego, fragmentu drogi")
                 void liczPojFragDrogi(){
-                    int index = dane.rozmiarTablicy()-2; // przedostatni element
-                    assertEquals(0,operacje.liczDroge(index));
+                    assertEquals(808.5906322652344,operacje.liczDroge(dane.odczytPrzedOstatniElement(),dane.odczytOstatniElement()));
                 }
                 
-                @Test@DisplayName("Liczenie łącznej przebytej drogi")
-                void liczCalaDroga(){
-                    fail();
-                }
+//                @Disabled
+//                @Test@DisplayName("Liczenie łącznej przebytej drogi")
+//                void liczCalaDroga(){
+//                    fail("jeszcze nie zaimplementowane");
+//                }
                 
                 @Test@DisplayName("Liczenie aktualnej prędkości względem ziemi")
                 void liczAktuPredkosc(){
-                    fail();
+                    assertEquals(6.911031045002003,operacje.liczPredkosc(dane.odczytPrzedOstatniElement(),dane.odczytOstatniElement()));
+    
                 }
             }
         }

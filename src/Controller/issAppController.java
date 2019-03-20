@@ -10,14 +10,14 @@ import static java.lang.Math.*;
 public class issAppController implements Runnable{
     
     zestawDanychISS daneiss = new zestawDanychISS();
-    issApp widok;
+    private issApp widok;
     
     // licznik 5 sekund (pasek ładowania)
     public void run(){
         this.licznik();
     }
     
-    void licznik(){
+    private void licznik(){
         double czas = 5.0;
         while (czas>0){
             try {
@@ -84,9 +84,7 @@ public class issAppController implements Runnable{
             daneiss = new zestawDanychISS();
         }
         
-        public double liczDroge(int index){
-            modelDanychISS a = daneiss.odczytNtyElement(index);
-            modelDanychISS b = daneiss.odczytNtyElement(index + 1);
+        public double liczDroge(modelDanychISS a, modelDanychISS b){
             
             int R = 6371;
             double dLat = toRadians(b.latitude() - a.latitude());
@@ -95,29 +93,25 @@ public class issAppController implements Runnable{
             double rLat2 = toRadians(b.latitude());
             double aa = sin(dLat/2) * sin(dLat/2) + cos(rLat1) * cos(rLat2) * sin(dLon/2) * sin(dLon/2);
             double cc = 2 * atan2(sqrt(aa), sqrt(1-aa));
-            double dd = R * cc;
-            
-            return dd;
+            return R * cc;
+        }
+    
+        public double liczPredkosc(modelDanychISS a, modelDanychISS b){
+            return liczDroge(a,b)/(b.timestamp()-a.timestamp());
         }
         
-        public double liczLacznaDroge(){
-            int index = 0;
-            double droga = 0.0;
-            int size = daneiss.rozmiarTablicy();
-            
-            while (index < size){
-                droga = droga + liczDroge(index);
-                index++;
-            }
-            
-            return droga;
-        }
-        
-        public double liczPredkosc(){
-            modelDanychISS a = daneiss.odczytPrzedOstatniElement();
-            modelDanychISS b = daneiss.odczytOstatniElement();
-            
-            return liczDroge(daneiss.rozmiarTablicy() - 1)/(b.timestamp()-a.timestamp());
-        }
+//        @Deprecated
+//        public double liczLacznaDroge(){
+//            int index = 0;
+//            double droga = 0.0;
+//            int size = daneiss.rozmiarTablicy();
+//
+//            while (index < size){
+//                droga += liczDroge(a, b);
+//                index++;
+//            }
+//
+//            return droga;
+//        }
     }
 }

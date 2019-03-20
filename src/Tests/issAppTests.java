@@ -6,19 +6,23 @@ import org.junit.jupiter.api.*;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-//todo poprekładać klasy testów do odpowiednich pakietów
-// niestety nie da się mieć wszystkiego w jednym pliczku :(
-
-//        dane.dodajOdczyt(1552696562, 51.3865, 4.7025);  // 0
-//        dane.dodajOdczyt(1552696679, 51.5185, 16.3822); // 1
-
 @DisplayName("Testy zestawu danych")
 class testyDanych {
-    zestawDanychISS dane;
+    private zestawDanychISS dane;
+    private issApp widok;
+    private issAppController kontroler; // licznik
+    private issAppController.operacjeNaDanych operacje; // obliczenia
+    private issAppController.przeplywDanych przeplyw; // przepływ
+    private issAppController.obslugaAPI api;
     
     @Test@DisplayName("Działa instancjonowanie")
     void jestInstancjonowane(){
         new zestawDanychISS();
+        new issApp();
+        new issAppController();
+        new issAppController.operacjeNaDanych();
+        new issAppController.przeplywDanych();
+        new issAppController.obslugaAPI();
     }
     
     @Nested@DisplayName("Kiedy nowa")
@@ -64,10 +68,36 @@ class testyDanych {
                     assertEquals(dane.odczytNtyElement(dane.rozmiarTablicy()-2),dane.odczytPrzedOstatniElement());
                 }
             }
+            
+            @Nested@DisplayName("Wykonuje poprawnie operacje")
+            class OperacjeNaDanych{
+                
+                @BeforeEach
+                void kontrolerOperacji(){
+                    operacje = new issAppController.operacjeNaDanych();
+                }
+                
+                @Test@DisplayName("Liczenie pojedyńczego, najnowszego, fragmentu drogi")
+                void liczPojFragDrogi(){
+                    int index = dane.rozmiarTablicy()-2; // przedostatni element
+                    assertEquals(0,operacje.liczDroge(index));
+                }
+                
+                @Test@DisplayName("Liczenie łącznej przebytej drogi")
+                void liczCalaDroga(){
+                    fail();
+                }
+                
+                @Test@DisplayName("Liczenie aktualnej prędkości względem ziemi")
+                void liczAktuPredkosc(){
+                    fail();
+                }
+            }
         }
     }
 }
 
+@Deprecated
 class testyWidoku {
     private final issApp widok = new issApp();
     
@@ -94,45 +124,6 @@ class testyWidoku {
             
             widok.updateLicznik(2.5);
             assertEquals("50%", widok.getLicznik());
-        });
-    }
-}
-
-class testyOperacjiNaDanych {
-    private final issApp widok = new issApp();
-    private final zestawDanychISS dane = new zestawDanychISS();
-    private final issAppController.operacjeNaDanych operacje = new issAppController.operacjeNaDanych();
-    
-    @BeforeEach
-    void init(){
-        dane.dodajOdczyt(1552696562, 51.3865, 4.7025);  // 0
-        dane.dodajOdczyt(1552696679, 51.5185, 16.3822); // 1
-    }
-    
-    @Test
-    void testLiczeniaDrogi(){
-        assertAll("pojedynczy fragment drogi",()->{
-            assertEquals(117,(dane.odczytOstatniElement().timestamp() - dane.odczytPrzedOstatniElement().timestamp()));
-        });
-    }
-    
-    @Test
-    void testLiczeniaLaczenjdrogi(){
-        dane.dodajOdczyt(1552696562, 51.3865, 4.7025);
-        dane.dodajOdczyt(1552696679, 51.5185, 16.3822);
-        
-        assertAll("cała droga",()->{
-        
-        });
-    }
-    
-    @Test
-    void testLiczeniaPredkosci(){
-        dane.dodajOdczyt(1552696562, 51.3865, 4.7025);
-        dane.dodajOdczyt(1552696679, 51.5185, 16.3822);
-        
-        assertAll("prędkość",()->{
-        
         });
     }
 }

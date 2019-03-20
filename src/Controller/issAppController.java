@@ -77,10 +77,14 @@ public class issAppController implements Runnable{
     }
     
     public static class operacjeNaDanych {
+    
+        zestawDanychISS daneiss;
         
-        zestawDanychISS daneiss = new zestawDanychISS();
+        public operacjeNaDanych(){
+            daneiss = new zestawDanychISS();
+        }
         
-        double liczDroge(int index){
+        public double liczDroge(int index){
             modelDanychISS a = daneiss.odczytNtyElement(index);
             modelDanychISS b = daneiss.odczytNtyElement(index + 1);
             
@@ -99,10 +103,10 @@ public class issAppController implements Runnable{
         public double liczLacznaDroge(){
             int index = 0;
             double droga = 0.0;
-            // int size = daneiss.rozmiarTablicy();
+            int size = daneiss.rozmiarTablicy();
             
-            while (daneiss.odczytNtyElement(index + 1) != null){
-                droga += liczDroge(index);
+            while (index < size){
+                droga = droga + liczDroge(index);
                 index++;
             }
             

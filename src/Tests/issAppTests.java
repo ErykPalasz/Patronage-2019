@@ -139,12 +139,12 @@ class testyDanych {
                         widok = new issApp();
                     }
                     
-                    //TODO: przekazanie predkosci
+                    //TODO: TEST przekazanie predkosci
 //                    @Test@DisplayName("")
                     
-                    //TODO: przekazanie drogi
+                    //TODO: TEST przekazanie drogi
                     
-                    //TODO: przekazanie postępu do licznika pięciosekundowego
+                    //TODO: TEST przekazanie postępu do licznika pięciosekundowego
                 }
             }
         }

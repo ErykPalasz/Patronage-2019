@@ -50,6 +50,7 @@ public class issApp extends JFrame {
 class wciskStart implements ActionListener{
     private issAppController controller = new issAppController();
     
+    //TODO: słuchacz przycisku [start]
     @Override
     public void actionPerformed(ActionEvent actionEvent) {
         try {

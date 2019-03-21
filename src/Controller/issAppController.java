@@ -12,7 +12,7 @@ public class issAppController implements Runnable{
     zestawDanychISS daneiss = new zestawDanychISS();
     private issApp widok;
     
-    // licznik 5 sekund (pasek ładowania)
+    //licznik 5 sekund (pasek ładowania)
     public void run(){
         this.licznik();
     }
@@ -30,6 +30,7 @@ public class issAppController implements Runnable{
         }
     }
     
+//    //TODO: zaktualizować funkcjonalność przycisku
 //    public void buttonPress(){
 //        MOCKdanychzAPI(0);
 //            run();
@@ -38,14 +39,11 @@ public class issAppController implements Runnable{
 //            updateVelocityToView();
 //            updateDistanceToView();
 //    }
-    
-    //###################################
-    
+
     public static class obslugaAPI {
         przeplywDanych przeplyw = new przeplywDanych();
         
-        //todo pobranie danych z api
-        //MOCK
+        //TODO: pobranie danych z api
         void MOCKdanychzAPI(int odczyt) {
             if (odczyt == 0) {
                 przeplyw.dodajodczyt(1552696562, 51.3865, 4.7025);
@@ -60,30 +58,36 @@ public class issAppController implements Runnable{
     public static class przeplywDanych {
         zestawDanychISS daneiss = new zestawDanychISS();
         issApp widok = new issApp();
+        operacjeNaDanych operacje;
         
         // przekazanie do modelu
+        //TODO: ????? przekazać obiekt zamiast danych
         void dodajodczyt(int timestamp, double lati, double longi){
             daneiss.dodajOdczyt(timestamp,lati,longi);
         }
         
-        // przekazanie prędkości i odległości do widoku
-//    void updateVelocityToView(){
-//        widok.updatePredkosc(obliczPredkosc());
-//    }
-//
-//    void updateDistanceToView(){
-//        widok.updateDroga(obliczDroge());
-//    }
+        //TODO: nie wiem co, ale ma się dać testować
+        modelDanychISS pokazodczyt(int index){
+            return daneiss.odczytNtyElement(index);
+        }
+        
+//        //przekazanie prędkości i odległości do widoku
+//        //TODO: dogonić aktualizację
+//        void updateVelocityToView(){
+//            operacje = new operacjeNaDanych();
+//            widok.updatePredkosc(operacje.liczPredkosc());
+//        }
+
+//        //TODO: dogonić aktualizację
+//        void updateDistanceToView(){
+//            operacje = new operacjeNaDanych();
+//            widok.updateDroga(operacje.liczDroge());
+//        }
     }
     
     public static class operacjeNaDanych {
-    
-        zestawDanychISS daneiss;
         
-        public operacjeNaDanych(){
-            daneiss = new zestawDanychISS();
-        }
-        
+        //TODO: ta metoda ma być 'niepubliczna' i wciąż dać się testować
         public double liczDroge(modelDanychISS a, modelDanychISS b){
             
             int R = 6371;

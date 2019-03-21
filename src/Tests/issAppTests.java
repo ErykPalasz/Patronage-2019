@@ -72,24 +72,73 @@ class testyDanych {
             @Nested@DisplayName("Wykonuje poprawnie operacje")
             class OperacjeNaDanych{
                 
-                @BeforeEach
-                void kontrolerOperacji(){
-                    operacje = new issAppController.operacjeNaDanych();
+                @Nested@DisplayName("Obliczeń")
+                class Obliczenia {
+    
+                    @BeforeEach
+                    void kontrolerOperacji() {
+                        operacje = new issAppController.operacjeNaDanych();
+                    }
+    
+                    @Test
+                    @DisplayName("Liczenie pojedyńczego, najnowszego, fragmentu drogi")
+                    void liczPojFragDrogi() {
+                        assertEquals(
+                                808.5906322652344,
+                                operacje.liczDroge(
+                                        dane.odczytPrzedOstatniElement(), dane.odczytOstatniElement()
+                                )
+                        );
+                    }
+    
+                    @Test
+                    @DisplayName("Liczenie łącznej przebytej drogi")
+                    void liczCalaDroga() {
+                        // tylko dwa parametry
+                        assertEquals(
+                                operacje.liczDroge(
+                                        dane.odczytPrzedOstatniElement(), dane.odczytOstatniElement()
+                                ),
+                                operacje.liczLacznaDroge(dane),
+                                "dwa parametry"
+                        );
+        
+                        // dodaje trzeci i łączna droga powinna być większa
+                        dane.dodajOdczyt(1552696562, 51.3865, 4.7025);  // 0
+                        assertEquals(
+                                operacje.liczDroge(
+                                        dane.odczytNtyElement(0), dane.odczytNtyElement(1)
+                                ) + operacje.liczDroge(
+                                        dane.odczytNtyElement(1), dane.odczytNtyElement(2)
+                                ),
+                
+                                operacje.liczLacznaDroge(dane),
+                                "trzy parametry"
+                        );
+                    }
+    
+                    @Test
+                    @DisplayName("Liczenie aktualnej prędkości względem ziemi")
+                    void liczAktuPredkosc() {
+                        assertEquals(
+                                6.911031045002003,
+                                operacje.liczPredkosc(
+                                        dane.odczytPrzedOstatniElement(), dane.odczytOstatniElement()
+                                )
+                        );
+                    }
                 }
                 
-                @Test@DisplayName("Liczenie pojedyńczego, najnowszego, fragmentu drogi")
-                void liczPojFragDrogi(){
-                    assertEquals(808.5906322652344,operacje.liczDroge(dane.odczytPrzedOstatniElement(),dane.odczytOstatniElement()));
-                }
-                
-                @Test@DisplayName("Liczenie łącznej przebytej drogi")
-                void liczCalaDroga(){
-                    assertEquals(operacje.liczDroge(dane.odczytPrzedOstatniElement(),dane.odczytOstatniElement()),operacje.liczLacznaDroge(dane));
-                }
-                
-                @Test@DisplayName("Liczenie aktualnej prędkości względem ziemi")
-                void liczAktuPredkosc(){
-                    assertEquals(6.911031045002003,operacje.liczPredkosc(dane.odczytPrzedOstatniElement(),dane.odczytOstatniElement()));
+                @Nested@DisplayName("Przekazania danych")
+                class Przekazania{
+                    
+                    @BeforeEach
+                    void kontrolerPrzekazania() {
+                        przeplyw = new issAppController.przeplywDanych();
+                        widok = new issApp();
+                    }
+                    
+//                    @Test@DisplayName("")
                 }
             }
         }

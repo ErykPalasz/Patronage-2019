@@ -100,18 +100,22 @@ public class issAppController implements Runnable{
             return liczDroge(a,b)/(b.timestamp()-a.timestamp());
         }
         
-//        @Deprecated
-//        public double liczLacznaDroge(){
-//            int index = 0;
-//            double droga = 0.0;
-//            int size = daneiss.rozmiarTablicy();
-//
-//            while (index < size){
-//                droga += liczDroge(a, b);
-//                index++;
-//            }
-//
-//            return droga;
-//        }
+        public double liczLacznaDroge(zestawDanychISS zestaw){
+            int index = 0;
+            double droga = 0.0;
+            int size = zestaw.rozmiarTablicy()-1;
+            modelDanychISS a, b;
+            
+
+            while (index < size){
+                a = zestaw.odczytNtyElement(index);
+                b = zestaw.odczytNtyElement(index+1);
+                
+                droga += liczDroge(a, b);
+                index++;
+            }
+
+            return droga;
+        }
     }
 }

@@ -82,16 +82,14 @@ class testyDanych {
                     assertEquals(808.5906322652344,operacje.liczDroge(dane.odczytPrzedOstatniElement(),dane.odczytOstatniElement()));
                 }
                 
-//                @Disabled
-//                @Test@DisplayName("Liczenie łącznej przebytej drogi")
-//                void liczCalaDroga(){
-//                    fail("jeszcze nie zaimplementowane");
-//                }
+                @Test@DisplayName("Liczenie łącznej przebytej drogi")
+                void liczCalaDroga(){
+                    assertEquals(operacje.liczDroge(dane.odczytPrzedOstatniElement(),dane.odczytOstatniElement()),operacje.liczLacznaDroge(dane));
+                }
                 
                 @Test@DisplayName("Liczenie aktualnej prędkości względem ziemi")
                 void liczAktuPredkosc(){
                     assertEquals(6.911031045002003,operacje.liczPredkosc(dane.odczytPrzedOstatniElement(),dane.odczytOstatniElement()));
-    
                 }
             }
         }

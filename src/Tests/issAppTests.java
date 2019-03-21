@@ -129,6 +129,7 @@ class testyDanych {
                     }
                 }
                 
+                //TODO: testy przekazania danych do widoku
                 @Nested@DisplayName("Przekazania danych")
                 class Przekazania{
                     
@@ -138,7 +139,12 @@ class testyDanych {
                         widok = new issApp();
                     }
                     
+                    //TODO: przekazanie predkosci
 //                    @Test@DisplayName("")
+                    
+                    //TODO: przekazanie drogi
+                    
+                    //TODO: przekazanie postępu do licznika pięciosekundowego
                 }
             }
         }

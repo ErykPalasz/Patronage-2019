@@ -8,7 +8,6 @@ import java.awt.event.ActionListener;
 
 public class issApp extends JFrame {
     public JPanel ISSspeedAPPview;
-    
     private JButton startButton;
     private JProgressBar piecsekund;
     private JLabel obliczDroga;

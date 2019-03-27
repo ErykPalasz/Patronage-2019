@@ -7,7 +7,7 @@ public class zestawDanychISS {
     private ArrayList<modelDanychISS> zestawDanychISS;
     
     public zestawDanychISS(){
-        zestawDanychISS = new ArrayList<>(2);
+        zestawDanychISS = new ArrayList<>(20);
     }
     
     // zapis

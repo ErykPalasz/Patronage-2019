@@ -1,33 +1,39 @@
 package Model;
 
 public class modelDanychISS {
-    // dostaję z api
-    private long timestamp = 0;
-    private double latitude = 0;
-    private double longitude = 0;
+    private long timestamp;
+    private double latitude;
+    private double longitude;
+    
+    modelDanychISS(long timestamp, double latitude, double longitude){
+        this.timestamp = timestamp;
+        this.latitude = latitude;
+        this.longitude = longitude;
+    }
     
     // getters and setters
-    public long getTimestamp() {
+    public long timestamp() {
         return timestamp;
     }
-    
-    public void setTimestamp(long timestamp) {
-        this.timestamp = timestamp;
-    }
-    
-    public double getLatitude() {
+    public double latitude() {
         return latitude;
     }
-    
-    public void setLatitude(double latitude) {
-        this.latitude = latitude;
-    }
-    
-    public double getLongitude() {
+    public double longitude() {
         return longitude;
     }
     
-    public void setLongitude(double longitude) {
+    @Deprecated
+    void setTimestamp(long timestamp) {
+        this.timestamp = timestamp;
+    }
+    
+    @Deprecated
+    void setLatitude(double latitude) {
+        this.latitude = latitude;
+    }
+    
+    @Deprecated
+    void setLongitude(double longitude) {
         this.longitude = longitude;
     }
 }

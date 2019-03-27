@@ -2,13 +2,12 @@ package Controller;
 
 import Model.zestawDanychISS;
 import Model.zestawDanychISSTest;
-import View.issApp;
 import org.junit.jupiter.api.*;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 @Tag("Test")
-class operacjeNaDanychTest extends zestawDanychISSTest {
+class obliczeniaNaDanychTest extends zestawDanychISSTest {
     zestawDanychISS dane;
     
     @Test
@@ -33,7 +32,7 @@ class operacjeNaDanychTest extends zestawDanychISSTest {
         void liczDroge() {
             assertEquals(
                     808.5906322652344,
-                    operacjeNaDanych.liczDroge(
+                    ObliczeniaNaDanych.liczDroge(
                             dane.odczytPrzedOstatniElement(),
                             dane.odczytOstatniElement()
                     )
@@ -45,25 +44,25 @@ class operacjeNaDanychTest extends zestawDanychISSTest {
         void liczLacznaDroge() {
             // tylko dwa parametry
             assertEquals(
-                    operacjeNaDanych.liczDroge(
+                    ObliczeniaNaDanych.liczDroge(
                             dane.odczytPrzedOstatniElement(), dane.odczytOstatniElement()
                     ),
-                    operacjeNaDanych.liczLacznaDroge(dane),
+                    ObliczeniaNaDanych.liczLacznaDroge(dane),
                     "dwa parametry"
             );
         
             // dodaje trzeci i łączna droga powinna być większa
             dane.dodajOdczyt(1552696562, 51.3865, 4.7025);  // 0
             assertEquals(
-                    operacjeNaDanych.liczDroge(
+                    ObliczeniaNaDanych.liczDroge(
                             dane.odczytNtyElement(0),
                             dane.odczytNtyElement(1)
-                    ) + operacjeNaDanych.liczDroge(
+                    ) + ObliczeniaNaDanych.liczDroge(
                             dane.odczytNtyElement(1),
                             dane.odczytNtyElement(2)
                     ),
                 
-                    operacjeNaDanych.liczLacznaDroge(dane),
+                    ObliczeniaNaDanych.liczLacznaDroge(dane),
                     "trzy parametry"
             );
         }
@@ -73,10 +72,7 @@ class operacjeNaDanychTest extends zestawDanychISSTest {
         void liczPredkosc() {
             assertEquals(
                     6.911031045002003,
-                    operacjeNaDanych.liczPredkosc(
-                            dane.odczytPrzedOstatniElement(),
-                            dane.odczytOstatniElement()
-                    )
+                    ObliczeniaNaDanych.liczPredkosc(dane)
             );
         }
     }

@@ -9,7 +9,7 @@ import org.junit.jupiter.api.TestFactory;
 import static org.junit.jupiter.api.Assertions.*;
 
 @Tag("Test")
-class obslugaAPITest extends zestawDanychISSTest {
+class APITest extends zestawDanychISSTest {
     
     @BeforeEach
     void setUp() {

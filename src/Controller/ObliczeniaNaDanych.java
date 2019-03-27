@@ -2,13 +2,16 @@ package Controller;
 
 import Model.modelDanychISS;
 import Model.zestawDanychISS;
+import org.jetbrains.annotations.NotNull;
 
 import static java.lang.Math.*;
 
-public abstract class operacjeNaDanych {
+/*================================================
+* dokonuje OBLICZEŃ na podstawie dostępnych danych
+* ================================================*/
+public abstract class ObliczeniaNaDanych {
     
-    //TODO: ta metoda ma być 'niepubliczna' i wciąż dać się testować
-    static double liczDroge(modelDanychISS a, modelDanychISS b){
+    static double liczDroge(@NotNull modelDanychISS a, @NotNull modelDanychISS b){
         
         int R = 6371;
         double dLat = toRadians(b.latitude() - a.latitude());
@@ -20,11 +23,13 @@ public abstract class operacjeNaDanych {
         return R * cc;
     }
     
-    public static double liczPredkosc(modelDanychISS a, modelDanychISS b){
-        return liczDroge(a,b)/(b.timestamp()-a.timestamp());
+    public static double liczPredkosc(@NotNull zestawDanychISS zestaw){
+        modelDanychISS a = zestaw.odczytPrzedOstatniElement();
+        modelDanychISS b = zestaw.odczytOstatniElement();
+        return liczDroge(a,b)/(b.timestamp()-a.timestamp()); // jednostka odległości / sekunde
     }
     
-    public static double liczLacznaDroge(zestawDanychISS zestaw){
+    public static double liczLacznaDroge(@NotNull zestawDanychISS zestaw){
         int index = 0;
         double droga = 0.0;
         int size = zestaw.rozmiarTablicy()-1;

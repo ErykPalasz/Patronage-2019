@@ -1,45 +1,42 @@
 package View;
 
-import Controller.issAppController;
+import Controller.API;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class issApp extends JFrame {
-    public JPanel ISSspeedAPPview;
-    private JButton startButton;
-    private JProgressBar piecsekund;
-    private JLabel obliczDroga;
-    private JLabel obliczPredkosc;
+    public JPanel           ISSspeedAPPview;
+    private JButton         startButton;
+    private JProgressBar    piecsekund;
+    private JLabel          obliczDroga;
+    private JLabel          obliczPredkosc;
     
     // słuchacz startu
-    public issApp(){
+    public issApp() {
         startButton.addActionListener(new wciskStart());
     }
     
     // setters and getters
-    public void updatePredkosc(double vel){
-        obliczPredkosc.setText(String.valueOf(vel));
+    public void updatePredkosc(double velocity) {
+        obliczPredkosc.setText(String.valueOf(velocity));
     }
-    
-    public String getPredkosc(){
+    public String getPredkosc() {
         return obliczPredkosc.getText();
     }
-    
-    public void updateDroga(double dis){
-        obliczDroga.setText(String.valueOf(dis));
+    public void updateDroga(double distance) {
+        obliczDroga.setText(String.valueOf(distance));
     }
-    
-    public String getDroga(){
+    public String getDroga() {
         return obliczDroga.getText();
     }
     
+    //TODO: Aktualizacja licznika
     public void updateLicznik(double cz){
         double procent = cz * 20;
         piecsekund.setValue((int) procent);
     }
-    
     public String getLicznik(){
         return piecsekund.getString();
     }
@@ -47,13 +44,13 @@ public class issApp extends JFrame {
 
 // słuchacz
 class wciskStart implements ActionListener{
-    private issAppController controller = new issAppController();
+    API api;
     
     //TODO: słuchacz przycisku [start]
     @Override
     public void actionPerformed(ActionEvent actionEvent) {
         try {
-        
+            api.buttonPress();
         }catch (Exception ex){
             ex.printStackTrace();
         }

@@ -24,7 +24,10 @@ class ZestawDanychTest {
     
     @Test
     void przedDodaniem() {
-        assertEquals(0, zestaw.rozmiarZestawu(), "rozmiar przed dodaniem");
+        assertEquals(0,
+                zestaw.rozmiarZestawu(),
+                "rozmiar przed dodaniem"
+        );
     }
     
     @Nested
@@ -41,7 +44,10 @@ class ZestawDanychTest {
     
         @Test
         void rozmiarZestawu() {
-            assertEquals(2,zestaw.rozmiarZestawu(), "rozmiar po dodaniu");
+            assertEquals(2,
+                    zestaw.rozmiarZestawu(),
+                    "rozmiar po dodaniu"
+            );
         }
     
         @Test

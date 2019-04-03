@@ -23,4 +23,8 @@ public class ModelDanych {
         return longitude;
     }
     
+    public double dodawanie(double a, double b) {
+        return a + b;
+    }
+    
 }

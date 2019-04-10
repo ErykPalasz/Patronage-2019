@@ -5,7 +5,7 @@ public class ModelDanych {
     private double latitude;
     private double longitude;
     
-    ModelDanych(long timestamp, double latitude, double longitude) {
+    public ModelDanych(long timestamp, double latitude, double longitude) {
         this.timestamp = timestamp;
         this.latitude = latitude;
         this.longitude = longitude;

@@ -68,7 +68,7 @@
           <text value="Pokonana droga:"/>
         </properties>
       </component>
-      <component id="6cba0" class="javax.swing.JLabel" binding="obliczPredkosc">
+      <component id="6cba0" class="javax.swing.JLabel" binding="obliczonaPredkosc">
         <constraints>
           <grid row="3" column="3" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
         </constraints>
@@ -76,7 +76,7 @@
           <text value=". . ."/>
         </properties>
       </component>
-      <component id="163c7" class="javax.swing.JLabel" binding="obliczDroga">
+      <component id="163c7" class="javax.swing.JLabel" binding="obliczonaDroga">
         <constraints>
           <grid row="4" column="3" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
         </constraints>

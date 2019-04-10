@@ -6,7 +6,7 @@ public class ZestawDanych {
 //    private ModelDanych model;
     private ArrayList<ModelDanych> dane;
     
-    ZestawDanych() {
+    public ZestawDanych() {
         dane = new ArrayList<>(20);
     }
     

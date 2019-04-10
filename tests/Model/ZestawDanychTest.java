@@ -38,7 +38,9 @@ class ZestawDanychTest {
             model0 = new ModelDanych(1552696562, 51.3865, 4.7025);
             model1 = new ModelDanych(1552696679, 51.5185, 16.3822);
     
+            // dodawanie gotowego modelu do zestawu
             zestaw.dodajOdczyt(model0);
+            // tworzenie nowego modelu w zestawie
             zestaw.dodajOdczyt(1552696679, 51.5185, 16.3822);
         }
     
@@ -52,12 +54,12 @@ class ZestawDanychTest {
     
         @Test
         void getNtyOdczyt() {
-            assertAll("[model0] Nty odczyt",
+            assertAll("[model0] Nty Odczyt",
                     () -> assertEquals(model0.getTimestamp(), zestaw.getNtyOdczyt(0).getTimestamp(),"timestamp"),
                     () -> assertEquals(model0.getLatitude(), zestaw.getNtyOdczyt(0).getLatitude(),"latitude"),
                     () -> assertEquals(model0.getLongitude(), zestaw.getNtyOdczyt(0).getLongitude(),"longitude")
             );
-            assertAll("[model1] Nty odczyt",
+            assertAll("[model1] Nty Odczyt",
                     () -> assertEquals(model1.getTimestamp(), zestaw.getNtyOdczyt(1).getTimestamp(),"timestamp"),
                     () -> assertEquals(model1.getLatitude(), zestaw.getNtyOdczyt(1).getLatitude(),"latitude"),
                     () -> assertEquals(model1.getLongitude(), zestaw.getNtyOdczyt(1).getLongitude(),"longitude")
